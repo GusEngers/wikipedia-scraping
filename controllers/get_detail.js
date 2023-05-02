@@ -37,7 +37,10 @@ async function getDetail(url) {
   const response = await axios
     .get(url)
     .then((d) => generateResults(d.data))
-    .catch((e) => e);
+    .catch((e) => {
+      e.message = 'Ups! An error has occurred!';
+      throw new Error(e.message);
+    });
   return response;
 }
 

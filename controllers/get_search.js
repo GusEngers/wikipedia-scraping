@@ -32,7 +32,10 @@ async function getSearch(language, query) {
   const response = await axios
     .get(URL)
     .then((d) => generateResults(d.data, language))
-    .catch((e) => e);
+    .catch((e) => {
+      e.message = 'Ups! An error has occurred!';
+      throw new Error(e.message);
+    });
   return response;
 }
 

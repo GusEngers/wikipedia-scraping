@@ -27,7 +27,10 @@ async function getLanguages() {
   let response = await axios
     .get(URL)
     .then((d) => generateResults(d.data))
-    .catch((e) => e);
+    .catch((e) => {
+      e.message = 'Ups! An error has occurred!';
+      throw new Error(e.message);
+    });
   return response;
 }
 
