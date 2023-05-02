@@ -3,7 +3,6 @@
 Proyecto con la finalidad de practicar Web Scraping haciendo uso de la página web de Wikipedia. Dado la finalidad que puede llegar a tener el Web Scraping **se informa que este proyecto utiliza estas técnicas para extraer información de Wikipedia con fines exclusivamente educativos y sin ánimo de lucro**.
 
 ## Endpoints
----
 **GET -** `/languages`<br>
 Lista de lenguajes disponibles en la página de Wikipedia.<br>
 `200`
