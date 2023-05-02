@@ -1,9 +1,11 @@
-const http = require('http');
+const express = require('express');
+const router = require('./routes');
+const app = express();
 
-http
-  .createServer((req, res) => {
-    res.end('Hola Mundo!');
-  })
-  .listen(3001, 'localhost', () => {
-    console.log('Server listen on port 3001');
-  });
+app.use(express.json());
+
+app.use('/', router);
+
+app.listen(3001, () => {
+  console.log('Starting server!');
+});
