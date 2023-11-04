@@ -1,25 +1,13 @@
-const express = require('express');
-const router = require('./routes');
-const app = express();
+const app = require('./src/app');
+require('dotenv').config();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.header(
-    'Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, DELETE, PATCH'
-  );
-  next();
-});
-
-app.use(express.json());
-
-app.use('/', router);
-
-app.listen(3001, () => {
-  console.log('Starting server!');
-});
+(function main() {
+  try {
+    const PORT = process.env.PORT ?? 3000;
+    app.listen(PORT, () => {
+      console.log('[INFO] Server starting on port:', PORT);
+    });
+  } catch (error) {
+    console.log('[ERROR] Error on starting server:', error);
+  }
+})();
